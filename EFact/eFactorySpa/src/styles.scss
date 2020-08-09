@@ -1,0 +1,85 @@
+/* You can add global styles to this file, and also import other style files */
+@import "~@angular/material/prebuilt-themes/indigo-pink.css";
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; background-color:#e6f2ff;}
+
+.card-header
+{ color: white;}
+
+
+  
+.form-field-full-width{
+    width: 310px;
+  }
+  .button-row{
+    margin: 8px 8px 8px 0;
+  }
+
+  .xng-breadcrumb-root {
+   // padding: 8px 16px;
+    
+    display: inline;
+    border-radius: 0;
+}
+
+label.xng-breadcrumb-trail {
+    margin-bottom: 0;
+    color: orange;
+}
+.col-md-12{
+  padding-right: 0px;
+  padding-left: 0px;
+}  
+.xng-breadcrumb-separator {
+    padding: 0 0;
+}
+
+.tile1{
+  position: fixed;
+  top: 10%;
+  left: 5%; 
+}
+ .tile2{
+  position: fixed;
+  top: 10%;
+  width: 50%;
+ }
+
+ mat-form-field {
+  width: 100%;
+  }
+
+  table {
+    width: 100%;
+  }
+  
+  .mat-form-field {
+    font-size: 14px;
+    width: 100%;
+  }
+  
+  td, th {
+    width: 25%;
+  }
+  
+  .mat-card{
+
+    border: 155px !important;
+    border-radius: 10px !important;
+    border: #000 !important;
+   }
+   
+   .mat-toolbar{
+    border: 55px !important;
+    border-radius: 10px !important;
+    border: #000 !important;
+   }
+
+   .mat-raised-button{
+    border: 55px !important;
+    border-radius: 10px !important;
+    border: #000 !important;
+   }
