@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using eFactory.Data;
+using eFactory.Errors;
 using eFactory.Extension;
 using eFactory.MiddleWare;
 using Microsoft.AspNetCore.Builder;
@@ -40,6 +41,21 @@ namespace eFactory
             services.AddDbContext<appIdentityDbContext>(options =>
             options.UseSqlServer(Configuration.GetConnectionString("DatabaseContext")));
 
+            services.Configure<ApiBehaviorOptions>(options =>
+            {
+                options.InvalidModelStateResponseFactory = ActionContext =>
+                {
+                    var errors = ActionContext.ModelState
+                                 .Where(a => a.Value.Errors.Count > 0)
+                                 .SelectMany(x => x.Value.Errors)
+                                 .Select(x => x.ErrorMessage).ToArray();
+                    var errorResponse = new ApiValidationErrorResponse
+                    {
+                        Errors = errors
+                    };
+                    return new BadRequestObjectResult(errorResponse);
+                };
+            });
 
             services.AddApplicationServices();
            

@@ -1,0 +1,97 @@
+<mat-grid-list cols="2" gutter-size="10px">
+    <mat-grid-tile width="20%">
+        <div class="tile1">
+            <div class="row">
+                <div class="col-mat-6 offset-mat-3">
+                    <mat-card style="width: 700px">
+                        <mat-toolbar color="primary">
+                            Parties
+                        </mat-toolbar>
+                        <mat-card-content>
+                                <br>
+                                <form [formGroup] = "masterForm" class="example-form" (ngSubmit)="onSubmit()">
+                                  <div>
+                                      <mat-form-field appearance="fill">
+                                          <mat-label>Party Name</mat-label>
+                                          <input matInput  placeholder="Party Name" type="text" formControlName="party_name" required>
+                                      </mat-form-field>
+                                        <mat-form-field appearance="fill">
+                                        <mat-label>Address</mat-label>
+                                        <input matInput  placeholder="City" type="text" formControlName="address">
+                                    </mat-form-field>
+                                      <mat-form-field appearance="fill">
+                                        <mat-label>City</mat-label>
+                                        <input matInput  placeholder="City" type="text" formControlName="city">
+                                    </mat-form-field>
+                                    <mat-form-field appearance="fill">
+                                        <mat-label>State</mat-label>
+                                        <input matInput  placeholder="State" type="text" formControlName="state">
+                                    </mat-form-field>
+
+                                      <mat-form-field appearance="fill">
+                                        <mat-label>Mobile Number</mat-label>
+                                        <input matInput  placeholder="Mobile Number" type="text" formControlName="mobile_no">
+                                    </mat-form-field>
+                                    <mat-form-field appearance="fill">
+                                        <mat-label>E-Mail ID</mat-label>
+                                        <input matInput  placeholder="E-Mail ID" type="text" formControlName="email_id">
+                                    </mat-form-field>
+                                    <mat-form-field appearance="fill">
+                                        <mat-label>Party Type</mat-label>
+                                        <mat-select  placeholder="Party Type"  formControlName="party_type">                
+                                          <mat-option value="Buyer">Buyer</mat-option>              
+                                          <mat-option value="Seller">Seller</mat-option>              
+                                          <mat-option value="Both">Both</mat-option>                                                        
+                                        </mat-select>
+                                      </mat-form-field>
+  
+                                    <mat-form-field appearance="fill">
+                                      <mat-label>Status</mat-label>
+                                      <mat-select  placeholder="Status" formControlName="status" required>                
+                                        <mat-option value="Active">Active</mat-option>              
+                                        <mat-option value="InActive">InActive</mat-option>              
+                                      </mat-select>
+                                    </mat-form-field>
+                                </div><br>
+                                <div class="button-row">
+                                    <button [disabled]="!masterForm.valid" mat-raised-button color="primary" type="submit">{{btnSave}}</button>&nbsp;&nbsp;  <!--  [disabled]="service.form.invalid" -->
+                                    <button mat-raised-button color="warn" (click)="onClear()">Reset</button>
+                                </div>
+                                </form>
+                        </mat-card-content>
+                    </mat-card>
+                </div>
+            </div>
+        </div>
+    </mat-grid-tile>
+    <mat-grid-tile width="20%">
+        <div class="tile2">
+            <table class="table">
+              <thead>
+              <tr>
+                  <th>Sl.No.</th>
+                  <th>Party Name</th>   
+                  <th>City</th>                     
+                  <th>Mobile Number</th>                     
+                  <th>E-Mail ID</th>                     
+                  <th>Status</th> 
+                  <th colspan="3" style="text-align: center;">Action</th>
+              </tr>
+              </thead>
+              <tbody>
+                  <!-- <tr *ngFor="let series of seriesList; let i = index;">
+                      <td>{{i+1}}</td>
+                      <td>{{series.series}}</td>
+                      <td>{{series.status}}</td>
+                        <td style="text-align: center;"> <button  mat-icon-button matSuffix (click)="edit(series.id)"  style="color:blue" [attr.aria-label]="'Edit Record'">
+                            <mat-icon matTooltip="Edit Record">edit</mat-icon>
+                            </button></td>
+                            <td style="text-align: center;"> <button  mat-icon-button matSuffix (click)="delete(series.id)" style="color:red" [attr.aria-label]="'Delete Record'">
+                                <mat-icon matTooltip="Delete Record">delete</mat-icon>
+                                </button></td>
+                  </tr> -->
+              </tbody>
+            </table>
+          </div>
+    </mat-grid-tile>
+</mat-grid-list>

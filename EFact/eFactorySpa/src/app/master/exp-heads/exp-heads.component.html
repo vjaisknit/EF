@@ -5,37 +5,34 @@
                 <div class="col-mat-6 offset-mat-3">
                     <mat-card style="width: 700px">
                         <mat-toolbar color="primary">
-                            Item Series
+                            Expenditure Heads
                         </mat-toolbar>
                         <mat-card-content>
                                 <br>
-                                <form [formGroup] = "masterForm" class="example-form" (ngSubmit)="onSubmit()">
+                                <form [formGroup] = "masterForm" class="example-form" (ngSubmit)="onSubmit()">                         
                                   <div>
                                       <mat-form-field appearance="fill">
-                                          <mat-label>Series</mat-label>
-                                          <input matInput  placeholder="Series" type="text" formControlName="series">
+                                          <mat-label>Expenditure Heads</mat-label>
+                                          <input matInput  placeholder="Heads" type="text" formControlName="exp_head" required>
                                       </mat-form-field>
                                   </div>
                                   <div>
                                     <mat-form-field appearance="fill">
                                       <mat-label>Status</mat-label>
-                                      <mat-select  placeholder="Status" formControlName="status">      
-                                        <mat-option  [value]="'0'">Select Status</mat-option>          
-                                        <mat-option [value]="1">Active</mat-option>              
-                                        <mat-option [value]="2">InActive</mat-option>              
+                                      <mat-select  placeholder="Status" formControlName="status"  required>                
+                                        <mat-option value="Active">Active</mat-option>              
+                                        <mat-option value="InActive">InActive</mat-option>              
+                                        <!-- <ng-container *ngFor="let st of status">
+                                            <mat-option value="">{{st}}</mat-option>
+                                        </ng-container>  -->
                                       </mat-select>
                                     </mat-form-field>
                                 </div><br>
                                 <div class="button-row">
-                                    <button  mat-raised-button color="primary" type="submit">{{btnSave}}</button>&nbsp;&nbsp;  <!--  [disabled]="service.form.invalid" -->
+                                    <button [disabled]="!masterForm.valid" mat-raised-button color="primary" type="submit">{{btnSave}}</button>&nbsp;&nbsp;  <!--  [disabled]="service.form.invalid" -->
                                     <button mat-raised-button color="warn" (click)="onClear()">Reset</button>
                                 </div>
                                 </form>
-                                <div>
-                                    <ul class="text-danger list-unstyled " *ngIf= "errors">
-                                     <li *ngFor="let error of errors">* {{error}}</li>
-                                    </ul>
-                                   </div>
                         </mat-card-content>
                     </mat-card>
                 </div>
@@ -48,23 +45,23 @@
               <thead>
               <tr>
                   <th>Sl.No.</th>
-                  <th>Series</th>   
+                  <th>Expenditure Heads</th>   
                   <th>Status</th> 
                   <th colspan="3" style="text-align: center;">Action</th>
               </tr>
               </thead>
               <tbody>
-                  <tr *ngFor="let series of dataList; let i = index;">
+                  <!-- <tr *ngFor="let series of seriesList; let i = index;">
                       <td>{{i+1}}</td>
-                      <td>{{series.description}}</td>
-                      <td>{{series.status == 1 ? 'Active': 'InActive'}}</td>
+                      <td>{{series.series}}</td>
+                      <td>{{series.status}}</td>
                         <td style="text-align: center;"> <button  mat-icon-button matSuffix (click)="edit(series.id)"  style="color:blue" [attr.aria-label]="'Edit Record'">
                             <mat-icon matTooltip="Edit Record">edit</mat-icon>
                             </button></td>
                             <td style="text-align: center;"> <button  mat-icon-button matSuffix (click)="delete(series.id)" style="color:red" [attr.aria-label]="'Delete Record'">
                                 <mat-icon matTooltip="Delete Record">delete</mat-icon>
                                 </button></td>
-                  </tr>
+                  </tr> -->
               </tbody>
             </table>
           </div>

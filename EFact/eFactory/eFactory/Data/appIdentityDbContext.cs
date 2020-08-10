@@ -18,5 +18,9 @@ namespace eFactory.Data
         {
             base.OnModelCreating(builder);
         }
+        public DbSet<ItemSeries> ItemSeries { get; set; }
+        public DbSet<Contractor> Contractor { get; set; }
+        public DbSet<Party> Party { get; set; }
+        
     }
 }

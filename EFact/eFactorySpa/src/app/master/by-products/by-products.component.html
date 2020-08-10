@@ -1,0 +1,92 @@
+<mat-grid-list cols="2" gutter-size="10px">
+    <mat-grid-tile width="20%">
+        <div class="tile1">
+            <div class="row">
+                <div class="col-mat-6 offset-mat-3">
+                    <mat-card style="width: 700px">
+                        <mat-toolbar color="primary">
+                            Items - By-Products
+                        </mat-toolbar>
+                        <mat-card-content>
+                                <br>
+                                <form [formGroup] = "masterForm" class="example-form" (ngSubmit)="onSubmit()">
+                                  <div>
+                                    <mat-form-field appearance="fill">
+                                        <mat-label>Series</mat-label>
+                                        <mat-select  placeholder="Series" formControlName="series_id" id="ddlSeries">                
+                                            <mat-option value="1">value-1</mat-option>
+                                            <mat-option value="2">value-2</mat-option>
+                                            <mat-option value="3">value-3</mat-option>
+                                        </mat-select>
+                                    </mat-form-field>
+                                  </div>
+                                  <div>
+                                      <mat-form-field appearance="fill">
+                                          <mat-label>Item Description</mat-label>
+                                          <input matInput  placeholder="Item Description" type="text" formControlName="item_desc" required>
+                                      </mat-form-field>
+                                      <mat-form-field appearance="fill">
+                                        <mat-label>Pieces per Shot</mat-label>
+                                        <input matInput  placeholder="Pieces per shot" type="text" formControlName="pcs_per_shot" required>                     
+                                      </mat-form-field>
+                                      <mat-form-field appearance="fill">
+                                        <mat-label>Weight per piece</mat-label>
+                                        <input matInput  placeholder="Weight per piece" type="text" formControlName="wt_per_piece" required>                     
+                                      </mat-form-field>
+                                    <mat-form-field appearance="fill">
+                                        <mat-label>Making Rate (per Shot)</mat-label>
+                                        <input matInput  placeholder="Making Rate" type="text" formControlName="making_rate" required>
+                                    </mat-form-field>
+                                    <mat-form-field appearance="fill">
+                                        <mat-label>Opening Balance</mat-label>
+                                        <input matInput  placeholder="Opening Balance" type="text" formControlName="op_balance" required>
+                                    </mat-form-field>
+                                    <mat-form-field class="example-full-width" appearance="fill">
+                                        <mat-label>As on :</mat-label>
+                                        <input matInput [matDatepicker]="as_on" formControlName="as_on" [max]="today">
+                                        <mat-datepicker-toggle matSuffix [for]="as_on">
+                                        <mat-icon matDatepickerToggleIcon>keyboard_arrow_down</mat-icon>
+                                        </mat-datepicker-toggle>
+                                        <mat-datepicker #as_on></mat-datepicker>
+                                    </mat-form-field>
+                                    <mat-form-field appearance="fill">
+                                      <mat-label>Status</mat-label>
+                                      <mat-select  placeholder="Status" formControlName="status"  required>                
+                                        <mat-option value="Active">Active</mat-option>              
+                                        <mat-option value="InActive">InActive</mat-option>              
+                                      
+                                      </mat-select>
+                                    </mat-form-field>
+                                </div><br>
+                                <div class="button-row">
+                                    <button [disabled]="!masterForm.valid" mat-raised-button color="primary" type="submit">{{btnSave}}</button>&nbsp;&nbsp;  <!--  [disabled]="service.form.invalid" -->
+                                    <button mat-raised-button color="warn" (click)="onClear()">Reset</button>
+                                </div>
+                                </form>
+                        </mat-card-content>
+                    </mat-card>
+                </div>
+            </div>
+        </div>
+    </mat-grid-tile>
+    <mat-grid-tile width="20%">
+        <div class="tile2">
+            <table class="table">
+              <thead>
+              <tr>
+                  <th>Sl.No.</th>
+                  <th>Item Code</th>   
+                  <th>Item Description</th> 
+                  <th>Opening Balance</th>                   
+                  <th>Status</th>                                     
+                  <th colspan="3" style="text-align: center;">Action</th>
+              </tr>
+              </thead>
+              <tbody>
+                
+              </tbody>
+            </table>
+          </div>
+    </mat-grid-tile>
+</mat-grid-list>
+

@@ -1,0 +1,87 @@
+<mat-grid-list cols="2" gutter-size="10px">
+    <mat-grid-tile width="20%">
+        <div class="tile1">
+            <div class="row">
+                <div class="col-mat-6 offset-mat-3">
+                    <mat-card style="width: 700px">
+                        <mat-toolbar color="primary">
+                            Contractors
+                        </mat-toolbar>
+                        <mat-card-content>
+                            <br>
+                            <form [formGroup]="masterForm" class="example-form" (ngSubmit)="onSubmit()">
+                                <div>
+                                    <mat-form-field appearance="fill">
+                                        <mat-label>Contractor Name</mat-label>
+                                        <input matInput placeholder="Contractor Name" type="text"
+                                            formControlName="cont_name" required>
+                                    </mat-form-field>
+                                    <mat-form-field appearance="fill">
+                                        <mat-label>Mobile Number</mat-label>
+                                        <input matInput placeholder="Mobile Number" type="number"
+                                            formControlName="mobile_no">
+                                    </mat-form-field>
+                                    <mat-form-field appearance="fill">
+                                        <mat-label>E-Mail ID</mat-label>
+                                        <input matInput placeholder="E-Mail ID" type="text" formControlName="email_id">
+                                    </mat-form-field>
+                                </div>
+                                <div>
+                                    <mat-form-field appearance="fill">
+                                        <mat-label>Status</mat-label>
+                                        <mat-select  placeholder="Status" formControlName="status">      
+                                          <mat-option  [value]="'0'">Select Status</mat-option>          
+                                          <mat-option [value]="1">Active</mat-option>              
+                                          <mat-option [value]="2">InActive</mat-option>              
+                                        </mat-select>
+                                      </mat-form-field>
+                                </div><br>
+                                <div class="button-row">
+                                    <button mat-raised-button [disabled]="formInvalid()" color="primary"
+                                        type="submit">Save</button>&nbsp;&nbsp;
+                                    <button mat-raised-button color="warn">Reset</button>
+                                </div>
+                            </form>
+                            <div>
+                                <ul class="text-danger list-unstyled " *ngIf="errors">
+                                    <li *ngFor="let error of errors">* {{error}}</li>
+                                </ul>
+                            </div>
+                        </mat-card-content>
+                    </mat-card>
+                </div>
+            </div>
+        </div>
+    </mat-grid-tile>
+    <mat-grid-tile width="20%">
+        <div class="tile2">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Sl.No.</th>
+                        <th>Contractor Name</th>
+                        <th>Mobile Number</th>
+                        <th>E-Mail ID</th>
+                        <th>Status</th>
+                        <th colspan="3" style="text-align: center;">Action</th>
+                    </tr>                    
+                </thead>
+                <tbody>
+                    <tr *ngFor="let cont of dataList; let i = index;">
+                        <td>{{i+1}}</td>
+                        <td>{{cont.contractorName}}</td>
+                        <td>{{cont.mobileNumber}}</td>
+                        <td>{{cont.email}}</td>
+                        <td>{{cont.status == 1 ? 'Active': 'InActive'}}</td>
+                          <td style="text-align: center;"> <button  mat-icon-button matSuffix (click)="edit(cont.id)"  style="color:blue" [attr.aria-label]="'Edit Record'">
+                              <mat-icon matTooltip="Edit Record">edit</mat-icon>
+                              </button></td>
+                              <td style="text-align: center;"> <button  mat-icon-button matSuffix (click)="delete(cont.id)" style="color:red" [attr.aria-label]="'Delete Record'">
+                                  <mat-icon matTooltip="Delete Record">delete</mat-icon>
+                                  </button></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </mat-grid-tile>
+</mat-grid-list>
